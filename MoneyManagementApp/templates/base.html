@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>MMA</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+
+<header>
+  <h2>Money Manager</h2>
+</header>
+
+<main>
+  {% block content %}{% endblock %}
+</main>
+
+<nav class="bottom-nav">
+  <a href="/accounts">Accounts</a>
+  <a href="/methods">Methods</a>
+  <a href="/categories">Categories</a>
+  <a href="/transactions/add">+ Txn</a>
+</nav>
+
+</body>
+</html>

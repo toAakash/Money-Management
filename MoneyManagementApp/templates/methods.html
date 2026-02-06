@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h3>Add Payment Method</h3>
+
+<form method="post">
+  <input name="method_name" placeholder="Method name">
+  <input name="masked_number" placeholder="****1234">
+  <select name="method_type">
+    <option>card</option>
+    <option>upi</option>
+    <option>cash</option>
+  </select>
+  <input name="account_id" placeholder="Account ID">
+  <button>Add Method</button>
+</form>
+
+{% endblock %}
