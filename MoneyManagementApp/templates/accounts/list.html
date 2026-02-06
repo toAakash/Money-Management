@@ -1,0 +1,17 @@
+{% extends "layout.html" %}
+{% block content %}
+
+<div class="card">
+  <h3>Accounts</h3>
+  <a href="/accounts/add">＋ Add Account</a>
+</div>
+
+{% for a in accounts %}
+  <div class="card">
+    <strong>{{ a[1] }}</strong><br>
+    <small>{{ a[2] }}</small>
+    <h4>₹ {{ a[3] }}</h4>
+  </div>
+{% endfor %}
+
+{% endblock %}

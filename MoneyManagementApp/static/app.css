@@ -1,0 +1,60 @@
+body {
+  margin: 0;
+  font-family: system-ui, Arial;
+  background: #f5f6f8;
+}
+
+.topbar {
+  background: #111;
+  color: #fff;
+  padding: 12px;
+  text-align: center;
+}
+
+main {
+  padding: 14px;
+  padding-bottom: 80px;
+}
+
+.card {
+  background: #fff;
+  padding: 14px;
+  border-radius: 8px;
+  margin-bottom: 14px;
+}
+
+input, select, textarea, button {
+  width: 100%;
+  padding: 12px;
+  margin-top: 10px;
+  font-size: 15px;
+}
+
+button {
+  background: #0d6efd;
+  color: white;
+  border: none;
+  border-radius: 6px;
+}
+
+.bottom-nav {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  background: white;
+  display: flex;
+  border-top: 1px solid #ddd;
+}
+
+.bottom-nav a {
+  flex: 1;
+  padding: 12px;
+  text-align: center;
+  text-decoration: none;
+  color: #333;
+}
+
+.add-btn {
+  font-size: 22px;
+  font-weight: bold;
+}

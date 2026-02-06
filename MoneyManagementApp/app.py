@@ -1,5 +1,5 @@
 from flask import Flask, request, jsonify, render_template, redirect
-from utils.sql_warehouse import get_connection
+from utils.sql_warehouse import get_conn
 
 from services.transaction_service import (
     create_transaction,
@@ -42,32 +42,39 @@ def api_dashboard():
     return jsonify(data)
 
 
-@app.route("/accounts", methods=["GET", "POST"])
-def accounts_ui():
-    if request.method == "POST":
-        name = request.form["account_name"]
-        acc_type = request.form["account_type"]
-        balance = request.form.get("balance") or 0
+@app.route("/accounts")
+def accounts_list():
+    conn = get_conn()
+    cur = conn.cursor()
 
-        conn = get_connection()
+    cur.execute("""
+        SELECT account_id, account_name, account_type, balance
+        FROM mma.finance.accounts
+        ORDER BY account_name
+    """)
+    accounts = cur.fetchall()
+
+    cur.close()
+    conn.close()
+
+    return render_template("accounts/list.html", accounts=accounts)
+
+
+@app.route("/accounts/add", methods=["GET", "POST"])
+def accounts_add():
+    if request.method == "POST":
+        conn = get_conn()
         cur = conn.cursor()
 
-        print("""
+        cur.execute("""
             INSERT INTO mma.finance.accounts
             (account_name, account_type, balance, created_ts, updated_ts)
             VALUES (?, ?, ?, current_timestamp(), current_timestamp())
-            """,
-            (name, acc_type, balance))
-
-        cur.execute(
-            """
-            INSERT INTO mma.finance.accounts
-            (account_name, account_type, balance, created_ts, updated_ts)
-            VALUES (?, ?, ?, current_timestamp(), current_timestamp())
-            """,
-            (name, acc_type, balance)
-            
-        )
+        """, (
+            request.form["account_name"],
+            request.form["account_type"],
+            request.form.get("balance") or 0
+        ))
 
         conn.commit()
         cur.close()
@@ -75,7 +82,7 @@ def accounts_ui():
 
         return redirect("/accounts")
 
-    return render_template("accounts.html")
+    return render_template("accounts/add.html")
 
 @app.route("/transactions/add", methods=["GET", "POST"])
 def add_transaction_ui():

@@ -2,7 +2,7 @@ from databricks import sql
 from databricks.sdk.core import Config
 import os
 
-def get_connection():
+def get_conn():
 
     cfg = Config()  # Pull environment variables for auth
     return sql.connect(
