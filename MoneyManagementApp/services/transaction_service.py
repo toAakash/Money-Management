@@ -3,7 +3,7 @@ from utils.sql_warehouse import get_conn
 
 
 # -------------------------
-# Helpers
+# Helper
 # -------------------------
 
 def _generate_fin_id(fin_id=None):
