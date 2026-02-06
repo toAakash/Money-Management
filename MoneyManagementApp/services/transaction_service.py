@@ -1,5 +1,5 @@
 import uuid
-from utils.sql_warehouse import get_connection
+from utils.sql_warehouse import get_conn
 
 
 # -------------------------
@@ -59,7 +59,7 @@ def create_transaction(payload):
     - normal transactions
     - transfer (2 rows, same fin_id)
     """
-    conn = get_connection()
+    conn = get_conn()
     cursor = conn.cursor()
 
     fin_id = _generate_fin_id(payload.get("fin_id"))
@@ -175,7 +175,7 @@ def update_transaction(txn_id, payload):
     - reversing old balance
     - applying new delta
     """
-    conn = get_connection()
+    conn = get_conn()
     cursor = conn.cursor()
 
     try:
@@ -243,7 +243,7 @@ def update_transaction(txn_id, payload):
 # -------------------------
 
 def delete_transaction(txn_id):
-    conn = get_connection()
+    conn = get_conn()
     cursor = conn.cursor()
 
     try:

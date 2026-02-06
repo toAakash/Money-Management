@@ -1,7 +1,7 @@
-from utils.sql_warehouse import get_connection
+from utils.sql_warehouse import get_conn
 
 def get_dashboard_data():
-    conn = get_connection()
+    conn = get_conn()
     cursor = conn.cursor()
 
     # 1. Per-account balances
