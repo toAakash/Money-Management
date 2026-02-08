@@ -10,14 +10,6 @@ from services.account_service import (
 
 app = Flask(__name__)
 
-# -------------------------
-# Health
-# -------------------------
-@app.route("/health", methods=["GET"])
-def health():
-    return {"status": "ok"}
-
-
 
 
 # ----------------------
