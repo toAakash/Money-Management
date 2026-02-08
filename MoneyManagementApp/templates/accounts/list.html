@@ -10,10 +10,11 @@
   <div class="card">
     <strong>{{ a[1] }}</strong><br>
     <small>{{ a[2] }}</small>
+
     <h4>₹ {{ a[3] }}</h4>
+
+    <a href="/accounts/{{ a[0] }}/edit">Edit</a>
   </div>
-
-
 {% endfor %}
 
 {% endblock %}
