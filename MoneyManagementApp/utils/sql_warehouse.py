@@ -10,3 +10,5 @@ def get_conn():
         http_path=f"/sql/1.0/warehouses/{os.getenv('DATABRICKS_WAREHOUSE_ID')}",
         credentials_provider=lambda: cfg.authenticate
     )
+
+
