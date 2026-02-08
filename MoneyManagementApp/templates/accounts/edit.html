@@ -1,0 +1,59 @@
+{% extends "layout.html" %}
+{% block content %}
+
+<div class="card">
+  <h3>Edit Account</h3>
+
+  <form method="post" id="accountForm">
+
+    <input
+      name="account_name"
+      value="{{ account[1] }}"
+      required
+    >
+
+    <select name="account_type">
+      <option value="bank" {% if account[2] == 'bank' %}selected{% endif %}>Bank</option>
+      <option value="cash" {% if account[2] == 'cash' %}selected{% endif %}>Cash</option>
+      <option value="demat" {% if account[2] == 'demat' %}selected{% endif %}>Demat</option>
+    </select>
+
+    <input
+      type="number"
+      step="0.01"
+      name="balance"
+      value="{{ account[3] }}"
+    >
+
+    <button type="submit" onclick="return confirmSave()">Save</button>
+
+    <button
+      type="button"
+      style="background:#dc3545;margin-top:10px"
+      onclick="confirmDelete()"
+    >
+      Delete Account
+    </button>
+
+  </form>
+</div>
+
+<script>
+function confirmSave() {
+  return confirm("Are you sure you want to save changes?");
+}
+
+function confirmDelete() {
+  if (confirm("This will permanently delete the account. Continue?")) {
+    const form = document.getElementById("accountForm");
+    const input = document.createElement("input");
+    input.type = "hidden";
+    input.name = "_action";
+    input.value = "delete";
+    form.appendChild(input);
+    form.submit();
+  }
+}
+</script>
+
+{% endblock %}
