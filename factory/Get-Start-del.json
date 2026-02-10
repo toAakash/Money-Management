@@ -1,0 +1,9 @@
+{
+	"name": "Get-Start-del",
+	"location": "eastus",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "1bee0267-d58d-4c25-b6bc-c99bbb46f874",
+		"tenantId": "1806da43-02b3-4ef8-9342-29e9e429d67c"
+	}
+}
